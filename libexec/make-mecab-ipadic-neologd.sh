@@ -73,16 +73,16 @@ if [ ! -e ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz ]; then
     do
         echo "$ECHO_PREFIX Try to download from ${ORG_DIC_URL_LIST[${I}]}"
         curl --insecure -L "${ORG_DIC_URL_LIST[${I}]}" -o "${ORG_DIC_NAME}.tar.gz"
-        if [ $? != 0 ]; then
-            echo ""
-            echo "$ECHO_PREFIX Failed to download $ORG_DIC_NAME"
-            echo "$ECHO_PREFIX Please check your network to download '${ORG_DIC_URL_LIST[${I}]}'"
-            exit 1;
-        elif [ `openssl sha1 ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz | cut -d $' ' -f 2,2` == "0d9d021853ba4bb4adfa782ea450e55bfe1a229b" ]; then
-            echo ""
-            echo "Hash value of ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz don't match"
-            continue 1
-        fi
+        #if [ $? != 0 ]; then
+        #    echo ""
+        #    echo "$ECHO_PREFIX Failed to download $ORG_DIC_NAME"
+        #    echo "$ECHO_PREFIX Please check your network to download '${ORG_DIC_URL_LIST[${I}]}'"
+        #    exit 1;
+        #elif [ `openssl sha1 ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz | cut -d $' ' -f 2,2` == "0d9d021853ba4bb4adfa782ea450e55bfe1a229b" ]; then
+        #    echo ""
+        #    echo "Hash value of ${BASEDIR}/../build/${ORG_DIC_NAME}.tar.gz don't match"
+        #    continue 1
+        #fi
     done
 else
     echo "$ECHO_PREFIX Original mecab-ipadic file is already there."
